@@ -1,34 +1,42 @@
 ### Photo Inventory Service
-This Python Webapp is a small service that will digitalize exchange places in local communities.
-- People can open the website and submit a photo, to share the current items in the exchange
-- Peopple can view the currently approved image of the exchange and see, which items are in the exchange for example
-- An administrator can approve submissions to update the publicly visible photo of the inventory
+This Containerized Web App allows to show the latest approved photo contribution of a place of interest. This could be an item exchange in your local community (e.g. to exchange books and other for free) or other places of interest for people where the help of others is needed. The texts are fully configurable through the config. 
+
+There are three main pages right now, that the user and administrator will use:
 
 _Index Page_
+`/` - View the approved image.
 ![Index Page](index_example.png)
 
 _Submit Photo_
+`/submit` - People can open the website and submit a photo, to share the current items in the exchange, for example.
 ![Submission Page](submit_example.png)
 
 _Approve Submission_
+- `/approve` - login as an administrator via Basic Auth. Approve submissions to update the publicly visible photo of the inventory. The latest 3 Submissions are shown.
 ![Approve Page](approve_example.png)
 
 
 
 #### Getting Started
-_S3 Storage:_
+The Web Application is based on Python and can be run in a Python Virtual Environment or via Docker. In order to make the Container Stateless, an Amazon S3 Bucket is being used.
+
+*_Prerequisites_*:
 The app works with AWS S3. Therefore there must be:
 - A (private) Bucket
 - An IAM User with Access Key & Credentials and permissions to the Bucket (List Files, Get Files, Upload Files/Put)
 
-_Config:_
-There is a config at the root level. You can use this or specify a custom config and overwrite the env var `PHOTO_INVENTORY_CONFIG_PATH`. The following variables should be updated:
+In order to fulfill this prerequisite, please create an S3 Bucket (https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html). The Bucket can be private (the Web App uses pre-signed URLs to show photographs, uploads are done through the Web App without pre-signed URLs). After the S3 Bucket is created, please create an IAM User trough the IAM Service. The User needs permissions (List, Get, Upload/Put) for the S3 Bucket and the Objects within. Create Security Credentials and note them (you will need them for the config later).
 
-- ADMIN_PASS - the administration password used for sites such as accepting submissions. DO NOT USE THE DEFAULT PASSWORD.
-- ACCESS_KEY - the AWS ACCESS KEY for the S3 Bucket
-- SECRET_ACCESS_KEY - the SECRET ACCESS KEY for the S3 Bucket
-- BUCKET_NAME - the AWS S3 Bucket Name where the photos should be stored
+_Config:_
+The Config allows for customization of the Web Application. There is an example under `/config.json`. You can update this or specify a custom config and overwrite the env var `PHOTO_INVENTORY_CONFIG_PATH` with e.g. `my-custom-config.json`. The following variables should be updated:
+
+- ADMIN_PASS - the administration password used for sites such as accepting submissions. *DO NOT USE THE DEFAULT PASSWORD.*
+- ACCESS_KEY - the AWS ACCESS KEY of the IAM User created for accessing the S3 Bucket
+- SECRET_ACCESS_KEY - the AWS SECRET ACCESS KEY of the IAM User created for accessing the S3 Bucket
+- BUCKET_NAME - the AWS S3 Bucket Name of the created Bucket where the photos should be stored
 - DEBUG - true/false
+
+There are additional config values that you can update. For example the Page Title, the Description in the Index Page as well as the Text for Photo Submission.
 
 Make sure to not push your config into the repository as it will contain secrets.
 
