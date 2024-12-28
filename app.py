@@ -83,9 +83,10 @@ def rename_object_in_s3(old_key, new_key):
         region_name=app.config.get('AWS_REGION')
     )
     try: # Copy the object to the new key 
-        s3_client.copy_object( Bucket=app.config.get('S3_BUCKET_NAME'), CopySource={'Bucket': app.config.get('S3_BUCKET_NAME'), 'Key': old_key}, Key=new_key, ACL='bucket-owner-full-control', ContentType='image/jpeg' ) 
-        # Delete the original object 
-        s3_client.delete_object( Bucket=app.config.get('S3_BUCKET_NAME'), Key=old_key ) 
+        if old_key != 'latest':
+            s3_client.copy_object( Bucket=app.config.get('S3_BUCKET_NAME'), CopySource={'Bucket': app.config.get('S3_BUCKET_NAME'), 'Key': old_key}, Key=new_key, ACL='bucket-owner-full-control', ContentType='image/jpeg' ) 
+            # Delete the original object
+            s3_client.delete_object( Bucket=app.config.get('S3_BUCKET_NAME'), Key=old_key ) 
         return True 
     except Exception as e: 
         print(f"Error renaming object: {e}") 
