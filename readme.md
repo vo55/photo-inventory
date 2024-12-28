@@ -1,14 +1,23 @@
 ### Photo Inventory Service
-This Python Webapp is a small service that will:
-- Show a description/text
-- Show an image of the inventory, which has been approved previously
-- Have the possibility to submit new inventory images for submission
-- Have an admin interface to approve new images and update the inventory image
+This Python Webapp is a small service that will digitalize exchange places in local communities.
+- People can open the website and submit a photo, to share the current items in the exchange
+- Peopple can view the currently approved image of the exchange and see, which items are in the exchange for example
+- An administrator can approve submissions to update the publicly visible photo of the inventory
+
+_Index Page_
+![Index Page](index_example.png)
+
+_Submit Photo_
+![Submission Page](submit_example.png)
+
+_Approve Submission_
+![Approve Page](approve_example.png)
+
 
 
 #### Getting Started
 _S3 Storage:_
-The app works with the AWS S3. Therefore there must be:
+The app works with AWS S3. Therefore there must be:
 - A (private) Bucket
 - An IAM User with Access Key & Credentials and permissions to the Bucket (List Files, Get Files, Upload Files/Put)
 
