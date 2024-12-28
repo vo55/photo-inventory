@@ -102,10 +102,10 @@ def verify_password(username, password):
 @app.route('/')
 def hello():
     image_url = generate_presigned_get_url()
-    if "submit" in request.headers.get("Referer"):
-        toast = app.config["FILE_UPLOAD_SUCCESS_TOAST"]
-    else: 
-        toast = None
+    toast = None
+    if "Referer" in request.headers.keys():
+        if "submit" in request.headers.get("Referer"):
+            toast = app.config["FILE_UPLOAD_SUCCESS_TOAST"]
     content = render_template(
         'index.html',
         app_name=app.config.get('APP_NAME'),
@@ -172,5 +172,4 @@ def process_approvals():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    app.run(host="0.0.0.0", debug=app.config['DEBUG'])
