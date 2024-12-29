@@ -124,7 +124,7 @@ def verify_password(username, password):
 @app.route('/')
 def hello():
     image_urls = []
-    for s3_obj in get_objects_sorted_by_newest(tag_key='approved'):
+    for s3_obj in get_objects_sorted_by_newest(tag_key='approved', limit=5):
         image_urls.append({"url": generate_presigned_get_url(key=s3_obj['Key']), "contributed": s3_obj['LastModified']})
     print(str(image_urls))
     content = render_template(
@@ -136,7 +136,8 @@ def hello():
         data=image_urls,
         upload_date=get_update_date(),
         map_enable=app.config.get('ENABLE_MAP'),
-        map_link=app.config.get('MAP_LINK')
+        map_link=app.config.get('MAP_LINK'),
+        carousel_interval=app.config.get('CAROUSEL_CYCLE_INTERVAL', 'false')
     )
     return content
 

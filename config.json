@@ -15,5 +15,6 @@
     "FILE_UPLOAD_SUCCESS_TOAST": "Thank you for your contribution. It has been uploaded successfully and is awaiting approval by the administrator.",
     "ENABLE_MAP": false,
     "MAP_ZOOM": "13",
-    "MAP_LINK": "https://www.openstreetmap.org/export/embed.html?bbox=9.871559143066406%2C53.50877425695151%2C10.088195800781252%2C53.58537224473345&amp;layer=mapnik\" style=\"border: 1px solid black\"></iframe><br/><small><a href=\"https://www.openstreetmap.org/#map=13/53.54709/9.97988"
+    "MAP_LINK": "https://www.openstreetmap.org/export/embed.html?bbox=9.871559143066406%2C53.50877425695151%2C10.088195800781252%2C53.58537224473345&amp;layer=mapnik\" style=\"border: 1px solid black\"></iframe><br/><small><a href=\"https://www.openstreetmap.org/#map=13/53.54709/9.97988",
+    "CAROUSEL_CYCLE_INTERVAL": "1500"
 }   
