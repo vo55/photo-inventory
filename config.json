@@ -1,15 +1,19 @@
 {
     "DEBUG": true,
-    "APP_NAME": "My App",
+    "APP_NAME": "CrowdCam for this place",
     "AWS_REGION": "eu-central-1",
-    "PAGE_TITLE": "My Photo Inventory",
-    "PAGE_DESCRIPTION": "This is my photo inventory website.",
-    "SUBMIT_TITLE": "Submit Photo",
-    "SUBMIT_DESCRIPTION": "You can upload a new photo here. Please make sure to cover the complete motive.",
+    "PAGE_TITLE": "crowdsrcd",
+    "PAGE_DESCRIPTION": "crowdsrcd is a crowd sourced webcam for all the places that do not have a webcam. We need your contribution to keep the image as current as possible. The last three approved submissions will be shown publicly. Crowdsrcd is ad-free and does not use any cookies. It does use third-party services (Bootstrap, OpenStreetMap).",
+    "SUBMIT_TITLE": "Contribute Photo",
+    "SUBMIT_DESCRIPTION": "You can upload a new photo here and add it to the CrowdCam history for this place. Thank you for your contribution.",
     "ACCESS_KEY": "your_secret_key",
     "SECRET_ACCESS_KEY": "your_secret_access_key",
     "SOME_SETTING": "some_value",
     "ADMIN_PASS": "replace-me",
     "S3_BUCKET_NAME": "default",
-    "FILE_UPLOAD_SUCCESS_TOAST": "File Upload Success"
-}
+    "S3_PREFIX": "thisplace/",
+    "FILE_UPLOAD_SUCCESS_TOAST": "Thank you for your contribution. It has been uploaded successfully and is awaiting approval by the administrator.",
+    "ENABLE_MAP": false,
+    "MAP_ZOOM": "13",
+    "MAP_LINK": "https://www.openstreetmap.org/export/embed.html?bbox=9.871559143066406%2C53.50877425695151%2C10.088195800781252%2C53.58537224473345&amp;layer=mapnik\" style=\"border: 1px solid black\"></iframe><br/><small><a href=\"https://www.openstreetmap.org/#map=13/53.54709/9.97988"
+}   
